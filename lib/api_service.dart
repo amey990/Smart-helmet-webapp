@@ -1,105 +1,4 @@
-// // lib/api_service.dart
-
-// import 'dart:convert';
-// import 'package:http/http.dart' as http;
-
-// class ApiService {
-//   static const String apiUrl =
-//       'https://i3soaiap2jdwtm3lk6ygvje3ie.appsync-api.us-east-1.amazonaws.com/graphql';
-//   // 'https://gqkcdholp5cohfjofmi5ereh6q.appsync-api.us-east-1.amazonaws.com/graphql';
-//   static const String apiKey = 'da2-zp4pfcf43jhotixugpv64cjutu';
-
-//   static Future<List<SmartHelmet>> fetchSmartHelmets() async {
-//     final response = await http.post(
-//       Uri.parse(apiUrl),
-//       headers: {
-//         'x-api-key': apiKey,
-//         'Content-Type': 'application/json',
-//       },
-//       body: jsonEncode({
-//         'query': '''
-//           // query MyQuery {
-//           //   listSmartHelmets(limit: 10) {
-//           //     items {
-//           //       Device_ID
-//           //       Env_temp
-//           //       Gas
-//           //       Hrt
-//           //       Obj_temp
-//           //       lat
-//           //       lng
-//           //       time
-//           //     }
-//           //   }
-//           // }
-
-//           query MyQuery {
-//   listSmartHelmets(limit:10) {
-//     items {
-//       Device_ID
-//       Env_temp
-//       Hrt
-//       Obj_temp
-//       VOLATILE_GAS
-//       CARBON_MONOXIDE
-//       NITROGEN_DIOXIDE
-//       ALCOHOL
-//       lat
-//       lng
-//       time
-//     }
-//   }
-// }
-
-//         '''
-//       }),
-//     );
-
-//     if (response.statusCode == 200) {
-//       final data = jsonDecode(response.body);
-//       final List<dynamic> items = data['data']['listSmartHelmets']['items'];
-//       return items.map((item) => SmartHelmet.fromJson(item)).toList();
-//     } else {
-//       throw Exception('Failed to load data');
-//     }
-//   }
-// }
-
-// class SmartHelmet {
-//   final String deviceId;
-//   final double envTemp;
-//   final String hrt;
-//   final double objTemp;
-//   final double lat;
-//   final double lng;
-//   final int time;
-
-//   SmartHelmet({
-//     required this.deviceId,
-//     required this.envTemp,
-//     required this.hrt,
-//     required this.objTemp,
-//     required this.lat,
-//     required this.lng,
-//     required this.time,
-//   });
-
-//   factory SmartHelmet.fromJson(Map<String, dynamic> json) {
-//     return SmartHelmet(
-//       deviceId: json['Device_ID'],
-//       envTemp: json['Env_temp'] != null
-//           ? double.parse(json['Env_temp'].toString())
-//           : 0.0,
-//       hrt: json['Hrt'],
-//       objTemp: json['Obj_temp'] != null
-//           ? double.parse(json['Obj_temp'].toString())
-//           : 0.0,
-//       lat: json['lat'] != null ? double.parse(json['lat'].toString()) : 0.0,
-//       lng: json['lng'] != null ? double.parse(json['lng'].toString()) : 0.0,
-//       time: json['time'],
-//     );
-//   }
-// }
+//api 1 with table replacing values//
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -132,6 +31,7 @@ class ApiService {
                 lat
                 lng
                 time
+                datetime
               }
             }
           }
@@ -158,9 +58,8 @@ class SmartHelmet {
   final double carbonMonoxide;
   final double nitrogenDioxide;
   final double alcohol;
-  final double lat;
-  final double lng;
-  final int time;
+  final String datetime;
+  String overallHealth;
 
   SmartHelmet({
     required this.deviceId,
@@ -171,9 +70,8 @@ class SmartHelmet {
     required this.carbonMonoxide,
     required this.nitrogenDioxide,
     required this.alcohol,
-    required this.lat,
-    required this.lng,
-    required this.time,
+    required this.datetime,
+    this.overallHealth = 'Good',
   });
 
   factory SmartHelmet.fromJson(Map<String, dynamic> json) {
@@ -198,14 +96,16 @@ class SmartHelmet {
       alcohol: json['ALCOHOL'] != null
           ? double.parse(json['ALCOHOL'].toString())
           : 0.0,
-      lat: json['lat'] != null ? double.parse(json['lat'].toString()) : 0.0,
-      lng: json['lng'] != null ? double.parse(json['lng'].toString()) : 0.0,
-      time: json['time'],
+      datetime: json['datetime'],
     );
   }
 }
 
-// mod2//
+  
+
+
+// mod2 with table having all the entries//
+
 // import 'dart:convert';
 // import 'package:http/http.dart' as http;
 
@@ -290,4 +190,4 @@ class SmartHelmet {
 //   }
 // }
 
-//mod 3 12.15pm//
+

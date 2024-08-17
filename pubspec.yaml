@@ -45,6 +45,8 @@ dependencies:
   flutter_svg: ^2.0.10+1
   graphql_flutter: ^5.2.0-beta.7
   mqtt_client: ^10.3.0
+  intl: ^0.19.0
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
@@ -72,15 +74,31 @@ flutter:
   assets:
     - assets/Images/commedianew.png
     - assets/Images/dashboard.png
-    - assets/Images/nelcologo.png
+    - assets/Images/company.png
     - assets/Images/commedianewlogo.png
     - assets/Images/helmet.png
     - assets/Images/helmetmain.png
     - assets/Images/bottomhelmet.png
-    - assets/Images/gas.png
-    - assets/Images/temp.png
-    - assets/Images/envicon.png
-    - assets/Images/hearticon.png
+    - assets/Images/displayhelmet.png
+    - assets/Images/minilogo.png
+    - assets/Images/usericon.png
+    - assets/Images/totalusers.png
+    - assets/Images/helmeticon.png
+    - assets/Images/dashboard.png
+    - assets/Images/totalusers.png
+    - assets/Images/activeusers.png
+    - assets/Images/active.png
+    - assets/Images/adduser.png
+    - assets/Images/userlist.png
+    
+
+
+
+    
+
+    
+
+
     
     
 
